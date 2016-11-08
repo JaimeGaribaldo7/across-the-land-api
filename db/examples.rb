@@ -16,3 +16,17 @@
 #                password: 'abc123',
 #                password_confirmation: nil)
 # end
+lists = {
+  'Places to go in the summer' => %w(Example\ Place),
+  'Places to go in the spring' => %w(Example\ Place),
+  'Places to go in the fall' => %w(Example\ Place),
+  'Places to go in the winter' => %w(Not\ the\ East\ Coast)
+}
+
+lists.each do |title, places|
+  list = List.find_or_create_by title: title
+  places.each do |content|
+    place = { content: content }
+    list.places.create place unless list.places.exists? place
+  end
+end

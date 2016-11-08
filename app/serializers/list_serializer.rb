@@ -1,7 +1,7 @@
 class ListSerializer < ActiveModel::Serializer
   attributes :id, :title, :hidden, :places
 
-  def items
+  def places
     object.places.pluck(:id)
   end
 end

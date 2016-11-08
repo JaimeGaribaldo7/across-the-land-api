@@ -49,11 +49,11 @@ class ListsController < ApplicationController
 
   private
 
-    def set_list
-      @list = List.find(params[:id])
-    end
+  def set_list
+    @list = List.find(params[:id])
+  end
 
-    def list_params
-      params[:list]
-    end
+  def list_params
+    params[:list].permit(:title, :hidden)
+  end
 end
